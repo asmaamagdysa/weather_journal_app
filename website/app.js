@@ -1,9 +1,9 @@
 /* Global Variables */
 let weatherURL = 'https://api.openweathermap.org/data/2.5/weather?zip='
-let myKey = '&appid=e593d2f86f222101cfc02d8ce08b62b9';
+const myKey = '&appid=e593d2f86f222101cfc02d8ce08b62b9';
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 let btnGenerate = document.getElementById('generate');
 btnGenerate.addEventListener('click',dataFun);
 
@@ -72,10 +72,10 @@ async function dataFun() {
       try{
         const resJson = await res.json();
         console.log( resJson);
-        document.getElementById('date').innerHTML = ` Date : ${ resJson[0].date }`;
-        document.getElementById('temp').innerHTML = ` Temperature : ${ Math.round(resJson[0].temp) } degrees`;
-        document.getElementById('content').innerHTML = `  You feeling : ${ resJson[0].feeling }`;
-    
+        document.getElementById('date').innerHTML = ` Date : ${ resJson.date }`;
+        document.getElementById('temp').innerHTML = ` Temperature : ${ Math.round(resJson.temp) } degrees`;
+        document.getElementById('content').innerHTML = `  You feeling : ${ resJson.feeling }`;
+    return resJson;
       }catch(error){
         console.log("error", error);
       }

@@ -23,7 +23,7 @@ const server = app.listen(port, ()=>{console.log(`running on localhost:${port}`)
 
 
 // Setup empty JS object to act as endpoint for all routes
-let projectData = [];
+let projectData = {};
 
 
 //POST route adds incoming data to projectData
@@ -33,14 +33,14 @@ function addData(req,res){
 console.log(
     "addData function "
 );
-projectData = []
+projectData = {}
   dataReq = {
     temp: req.body.temp,
     date: req.body.date,
     feeling: req.body.feeling
   }
 
-  projectData.push(dataReq)
+  projectData=dataReq;
   console.log(projectData)
   res.send(projectData)
   
@@ -50,5 +50,5 @@ projectData = []
 app.get('/getData', function (req, res) {
   console.log("all");
   res.send(projectData)
-  projectData = []
+  projectData = {}
 })
